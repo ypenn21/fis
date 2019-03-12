@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+    xmlns:camel="http://camel.apache.org/schema/spring"
+    xmlns:mongo="http://www.springframework.org/schema/data/mongo"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="        http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd        http://camel.apache.org/schema/spring http://camel.apache.org/schema/spring/camel-spring.xsd">
+    <!-- Define a traditional camel context here -->
+   
+    <bean class="com.mongodb.MongoClient" id="mongoBean">
+        <constructor-arg name="host" value="${mongodb.host}"/>
+        <constructor-arg name="port" value="${mongodb.port}"/>
+    </bean>
+    
+    <bean class="org.kp.processors.CSVToJson" id="csvToJson">
+        <property name="producer" ref="producerTemplate"/>
+        <constructor-arg type="java.lang.Boolean" value="true"/>
+        <constructor-arg type="java.lang.String" value=""/>
+    </bean>
+    
+    <bean class="org.kp.utils.Utils" id="parserBean"/>
+    
+    <camelContext id="camel" xmlns="http://camel.apache.org/schema/spring">
+    
+        <template defaultEndpoint="direct:handleJson" id="producerTemplate"/>
+
+        <route id="pt-rpm-integration-insert">
+            <from id="_from1" uri="file:/Users/miqbal/Development/kaiser/files/in/rpm?noop=true"/>
+            <process id="_process1" ref="csvToJson"/>
+        </route>
+        
+        <route id="handleJson">
+            <from id="_from2" uri="direct:handleJson"/>
+            <to id="_to1" uri="bean:parserBean?method=parseStringToJson"/>
+            <to uri="mongodb:mongoBean?database={{mongodb.database}}&amp;collection={{mongodb.collection}}&amp;operation=insert" />            
+            
+        </route>
+    </camelContext>
+</beans>
