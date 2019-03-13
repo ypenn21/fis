@@ -10,13 +10,8 @@ pipeline {
             steps {
                 println 'Start build!'
                 sh 'mvn clean package'
-                def app = docker.build(".")
+                docker.build(".")
                 println 'done!'
-
-                             app.inside {
-                                sh 'ls -la'
-                                sh 'curl localhost:9090/health'
-                             }
             }
         }
 
