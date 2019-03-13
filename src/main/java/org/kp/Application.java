@@ -16,6 +16,7 @@
  */
 package org.kp;
 
+
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.ImportResource;
@@ -29,7 +30,11 @@ public class Application {
      * A main method to start this application.
      */
     public static void main(String[] args) {
-        SpringApplication.run(Application.class, args);
+
+        final Class<?> [] sources = {
+//            Controller.class,
+                Application.class};
+        SpringApplication.run(sources, args);
     }
 
 }

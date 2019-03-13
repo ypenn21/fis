@@ -22,16 +22,23 @@
     
         <template defaultEndpoint="direct:handleJson" id="producerTemplate"/>
 
+        <!--<route>-->
+            <!--<from uri="timer://foo?delay=30"/>-->
+            <!--<to uri="direct:pt-rpm-integration-insert"/>-->
+        <!--</route>-->
+
         <route id="pt-rpm-integration-insert">
-            <from id="_from1" uri="file:/Users/miqbal/Development/kaiser/files/in/rpm?noop=true"/>
+            <!--<from id="_from1" uri="file:C:/Users/ypeng/Documents/development?noop=true&amp;delay=5s"/>-->
+            <from id="_from1" uri="file:Users/ypeng/Documents/development?noop=true&amp;delay=5s"/>
+            <!--<from id="_from1" uri="file:/Users/ypeng/Documents/development?fileName=test&amp;noop=true&amp;delay=7000"/>-->
             <process id="_process1" ref="csvToJson"/>
         </route>
         
         <route id="handleJson">
             <from id="_from2" uri="direct:handleJson"/>
             <to id="_to1" uri="bean:parserBean?method=parseStringToJson"/>
-            <!--<to uri="mongodb:mongoBean?database={{mongodb.database}}&amp;collection={{mongodb.collection}}&amp;operation=insert" />            -->
-            
+            <!--<to uri="mongodb:mongoBean?database={{mongodb.database}}&amp;collection={{mongodb.collection}}&amp;operation=insert" />-->
+
         </route>
     </camelContext>
 </beans>

@@ -71,6 +71,7 @@ public class CSVToJson implements Processor {
 	}
 	@Override
 	public void process(Exchange arg0) throws Exception {
+		logger.info("process the file yanni de2bugging");
 		InputStream stream = arg0.getIn().getBody(InputStream.class);
 		List<Map<?, ?>> objects = readObjectsFromCsv(stream);
 	
@@ -88,7 +89,7 @@ public class CSVToJson implements Processor {
         CsvMapper csvMapper = new CsvMapper();
         String csv = IOUtils.toString(file, "UTF-8");
         MappingIterator<Map<?, ?>> mappingIterator = csvMapper.readerFor(Map.class).with(schema).readValues(csv);
-
+		logger.info("csv: " + csv);
         return this.fixMap(mappingIterator.readAll());
     }
     
