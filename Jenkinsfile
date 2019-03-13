@@ -10,7 +10,7 @@ pipeline {
             steps {
                 println 'Start build!'
                 sh 'mvn clean package'
-                docker.build(".")
+                sh 'docker build .'
                 println 'done!'
             }
         }
