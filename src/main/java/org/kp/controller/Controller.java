@@ -13,7 +13,7 @@ public class Controller {
     @ResponseBody
     public Map testRestApi() {
         Map mymap = new HashMap();
-        mymap.put("test", "yanni");
+        mymap.put("test", "yanni-peng");
         return mymap;
     }
 
