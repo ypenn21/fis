@@ -71,7 +71,7 @@ public class CSVToJson implements Processor {
 	}
 	@Override
 	public void process(Exchange arg0) throws Exception {
-		logger.info("process the file yanni de2bugging x3");
+		logger.info("process the file yanni de2bugging x4");
 		InputStream stream = arg0.getIn().getBody(InputStream.class);
 		List<Map<?, ?>> objects = readObjectsFromCsv(stream);
 	
