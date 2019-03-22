@@ -10,7 +10,7 @@
         <!--<constructor-arg name="port" value="${mongodb.port}"/>-->
     <!--</bean>-->
     
-    <bean class="org.kp.processors.CSVToJson" id="csvToJson">
+    <bean class="org.kp.processors.Processor" id="csvToJson">
         <property name="producer" ref="producerTemplate"/>
         <constructor-arg type="java.lang.Boolean" value="true"/>
         <constructor-arg type="java.lang.String" value=""/>

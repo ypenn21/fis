@@ -1,30 +1,15 @@
 package org.kp.processors;
 
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.Writer;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
 import java.util.logging.Logger;
 
 import org.apache.camel.Exchange;
-import org.apache.camel.Processor;
 import org.apache.camel.ProducerTemplate;
-import org.apache.commons.io.IOUtils;
-import org.apache.commons.lang3.StringUtils;
 
-import com.fasterxml.jackson.core.JsonProcessingException;
-import com.fasterxml.jackson.databind.MappingIterator;
-import com.fasterxml.jackson.databind.ObjectMapper;
-import com.fasterxml.jackson.dataformat.csv.CsvMapper;
 import com.fasterxml.jackson.dataformat.csv.CsvSchema;
-import com.fasterxml.jackson.dataformat.csv.CsvSchema.Builder;
 
-public class CSVToJson implements Processor {
+public class Processor implements org.apache.camel.Processor {
 	
-	private Logger logger = Logger.getLogger(CSVToJson.class.getName());
+	private Logger logger = Logger.getLogger(Processor.class.getName());
 	
 	ProducerTemplate producer;
 	
@@ -35,7 +20,7 @@ public class CSVToJson implements Processor {
 	private CsvSchema schema;
 
 	
-	public CSVToJson(Boolean header, String fieldNames) throws Exception{
+	public Processor(Boolean header, String fieldNames) throws Exception{
 		return;
 	}
 
