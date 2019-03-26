@@ -28,9 +28,12 @@ public class Controller {
     @ResponseBody
     public Map testEnvironment() {
         String test = System.getenv("test");
+        String mySecret = System.getenv("mySecret");
+        logger.info("environment mySecret variable is: "+mySecret);
         logger.info("environment variable is: "+test);
         Map mymap = new HashMap();
         mymap.put("test", test);
+        mymap.put("mySecret", mySecret);
         return mymap;
     }
 
