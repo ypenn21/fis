@@ -22,9 +22,10 @@ public class Controller {
 
     @RequestMapping("/greeting")
     public Map greeting(@RequestParam(value="name", defaultValue="World") String name) {
+        String test = System.getenv("test");
         Map mymap = new HashMap();
         mymap.put(counter.incrementAndGet(), String.format(template, name));
+        mymap.put("test", test);
         return mymap;
-
     }
 }
