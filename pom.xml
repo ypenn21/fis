@@ -214,4 +214,39 @@
       </plugin>
     </plugins>
   </build>
+
+  <profiles>
+    <profile>
+      <id>openshift</id>
+      <build>
+        <plugins>
+          <plugin>
+            <groupId>io.fabric8</groupId>
+            <artifactId>fabric8-maven-plugin</artifactId>
+            <version>3.5.28</version>
+            <executions>
+              <execution>
+                <id>fmp</id>
+                <phase>package</phase>
+                <goals>
+                  <goal>resource</goal>
+                  <goal>build</goal>
+                </goals>
+              </execution>
+            </executions>
+            <configuration>
+              <generator>
+                <config>
+                  <spring-boot>
+                    <fromMode>isTag</fromMode>
+                    <from>redhat-openjdk18-openshift:1.1</from>
+                  </spring-boot>
+                </config>
+              </generator>
+            </configuration>
+          </plugin>
+        </plugins>
+      </build>
+    </profile>
+  </profiles>
 </project>
