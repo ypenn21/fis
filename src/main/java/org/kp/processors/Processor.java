@@ -26,7 +26,7 @@ public class Processor implements org.apache.camel.Processor {
 
 	@Override
 	public void process(Exchange arg0) throws Exception {
-		logger.info("process the file yanni de2bugging x4");
+		logger.info("process the file yanni de2bugging x5");
 		return;
 	}
 
