@@ -1,7 +1,7 @@
 node {
    def mvnHome
    def registry = "yannipeng/fis"
-   def registryCredential = 'Fulltime2017$'
+   def registryCredential = 'pass'
 
    stage('Preparation') { // for display purposes
       // Get some code from a GitHub repository

@@ -5,7 +5,7 @@ COPY target/project-tracking-rpm-integration-1.0.jar project-tracking-rpm-integr
 COPY Users/ypeng/Documents/development Users/ypeng/Documents/development
 
 
-EXPOSE 9090
+EXPOSE 8080
 
-ENTRYPOINT ["java", "-jar", "project-tracking-rpm-integration-1.0.jar", "--server.port=9090"]
+ENTRYPOINT ["java", "-jar", "project-tracking-rpm-integration-1.0.jar", "--server.port=8080"]
 
